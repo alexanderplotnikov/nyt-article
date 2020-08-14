@@ -3,3 +3,122 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.wrapper {
+  display: grid;
+}
+
+/* Toobar */
+.toolbar {
+  background-color: #fff;
+  position: fixed;
+  display: flex;
+  grid-template-columns: auto auto auto auto auto;
+  align-items: center;
+  height: 56px;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+}
+.toolbar > * {
+  margin: 0 5px;
+  cursor: pointer;
+}
+.toolbar a {
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.toolbar a:hover {
+  text-decoration: underline;
+}
+.toolbar h1 {
+  position: absolute;
+  left: calc(50% - 90px);
+  min-width: 180px;
+  text-align: center;
+  justify-content: center;
+}
+.toolbar button:first-of-type {
+  margin-left: auto;
+}
+.btn {
+  color: #fff;
+  border: none;
+  height: 30px;
+  font-weight: 600;
+  padding: 5px 8px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  background-color: rgb(19, 130, 204);
+}
+.btn:hover {
+  background-color: rgb(5, 95, 155);
+}
+
+/* Main Content*/
+main {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 56px;
+}
+
+main > header {
+  display: grid;
+  grid-template-columns: 20% auto 20%;
+  margin-bottom: 30px;
+}
+main > header h1 {
+  grid-column: 2 / span 1;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  font-size: 1.5em;
+  font-weight: 600;
+  font-style: italic;
+}
+main > header figure {
+  grid-column: 1 / -1;
+}
+main > header figcaption {
+  padding-top: 5px;
+  line-height: 1.2;
+}
+main > header figcaption span {
+  font-size: 0.8em;
+  color: #555;
+}
+main > header img {
+  object-fit: cover;
+  width: 100%;
+}
+
+/* Article header */
+.mainArticle {
+  display: grid;
+  grid-template-columns: 20% auto 20%;
+}
+.mainArticle > * {
+  grid-column: 2 / span 1;
+}
+.mainArticle > header h2 {
+  padding-bottom: 10px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.mainArticle > header div {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+.mainArticle > header a:first-of-type {
+  margin-left: auto;
+}
+.mainArticle > header {
+  padding: 10px 0;
+}
+.mainArticle > header a {
+  margin: 0 5px;
+  padding: 0 5px;
+  border: 1px solid black;
+  height: 24px;
+  width: 24px;
+}
