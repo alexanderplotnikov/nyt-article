@@ -3,7 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+body * {
+  /* border: 1px solid red; */
+}
 .wrapper {
   display: grid;
 }
@@ -31,13 +33,17 @@
 .toolbar a:hover {
   text-decoration: underline;
 }
-.toolbar h1 {
-  position: absolute;
-  left: calc(50% - 90px);
-  min-width: 180px;
-  text-align: center;
-  justify-content: center;
+.logo {
+  width: 240px;
 }
+.logo svg {
+  display: block;
+}
+.toolbar .logo {
+  position: absolute;
+  left: calc(50% - 120px);
+}
+
 .toolbar button:first-of-type {
   margin-left: auto;
 }
@@ -50,6 +56,7 @@
   border-radius: 3px;
   text-transform: uppercase;
   background-color: rgb(19, 130, 204);
+  cursor: pointer;
 }
 .btn:hover {
   background-color: rgb(5, 95, 155);
@@ -71,7 +78,7 @@ main > header h1 {
   grid-column: 2 / span 1;
   padding-top: 50px;
   padding-bottom: 20px;
-  font-size: 1.5em;
+  font-size: 1.75em;
   font-weight: 600;
   font-style: italic;
 }
@@ -92,11 +99,11 @@ main > header img {
 }
 
 /* Article header */
-.mainArticle {
+.mainArticle > header {
   display: grid;
   grid-template-columns: 20% auto 20%;
 }
-.mainArticle > * {
+.mainArticle > header > * {
   grid-column: 2 / span 1;
 }
 .mainArticle > header h2 {
@@ -115,10 +122,285 @@ main > header img {
 .mainArticle > header {
   padding: 10px 0;
 }
-.mainArticle > header a {
+.socialIcon {
   margin: 0 5px;
   padding: 0 5px;
   border: 1px solid black;
+  border-radius: 3px;
   height: 24px;
   width: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.socialIcon:hover {
+  color: #555;
+  border-color: #555;
+  box-shadow: 0 0 1px 0 #000;
+}
+
+/* Article main section */
+.mainArticle > section,
+.mainArticle > footer {
+  display: grid;
+  grid-template-columns: 20% auto 20%;
+}
+.mainArticle > section > p,
+.mainArticle > section > h2,
+.mainArticle > footer > *,
+.videoEmbed,
+.photoEmbed {
+  grid-column: 2 / span 1;
+}
+.mainArticle > section > p {
+  line-height: 1.5;
+}
+.mainArticle > section {
+  padding-top: 24px;
+}
+.mainArticle > section > h2 {
+  font-size: 1.1em;
+  font-weight: 600;
+  padding-bottom: 24px;
+}
+.mainArticle > section .theory {
+  grid-column: 1 / -1;
+}
+
+/* Theory style */
+.theory {
+  margin: 18px 0;
+}
+.theory > header {
+  padding: 12px 0;
+}
+.theory h2 {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.theory > section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+.theory img {
+  display: block;
+  object-fit: cover;
+  height: 140px;
+  max-width: 100%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+.theory span {
+  font-weight: bold;
+}
+.theory > footer {
+  position: relative;
+  padding-top: 18px;
+  padding-bottom: 24px;
+  margin-top: 24px;
+}
+.theory > footer:before {
+  position: absolute;
+  top: 0;
+  content: '';
+  border-top: 1px solid black;
+  width: 75px;
+}
+
+/* Youtube video embed */
+.videoEmbed,
+.photoEmbed {
+  padding: 2.5em 0;
+}
+.videoEmbed > figure div {
+  display: block;
+  width: 100%;
+  position: relative;
+  padding-bottom: 56.25%;
+}
+.videoEmbed > figure > div iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.videoEmbed figcaption,
+.photoEmbed figcaption {
+  padding-top: 5px;
+}
+
+.photoEmbed {
+  width: 100%;
+}
+.photoEmbed img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* Article footer */
+.mainArticle > footer p {
+  font-size: 0.8em;
+  color: #555;
+  padding: 18px 0;
+}
+.mainArticle > footer > div {
+  display: flex;
+  align-items: center;
+  padding-bottom: 18px;
+}
+.mainArticle > footer a:first-of-type {
+  margin-left: auto;
+}
+
+/* More in Space, Editor's choice, Top News sections */
+aside {
+  display: grid;
+  grid-template-areas:
+    'more   more   more   news'
+    'more   more   more   news'
+    'editor editor editor news';
+  margin-top: 18px;
+  gap: 30px;
+}
+aside figcaption {
+  font-size: 0.75em;
+  color: #555;
+  text-align: end;
+}
+aside figure + a:hover {
+  color: #555;
+  cursor: pointer;
+}
+aside .gallery,
+aside .editor {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(1, auto);
+  gap: 20px;
+  border-top: 2px solid black;
+}
+aside .gallery {
+  grid-area: more;
+}
+aside .editor {
+  grid-area: editor;
+}
+aside .feed {
+  grid-area: news;
+}
+aside h2 {
+  font-weight: 600;
+  font-size: 1.1em;
+  padding-top: 20px;
+  grid-column: 1 / -1;
+  justify-content: center;
+}
+aside img {
+  width: 100%;
+  grid-row-start: 2;
+}
+aside span {
+  font-size: 0.75em;
+  color: #555;
+}
+aside ul > a {
+  color: inherit;
+  text-decoration: none;
+}
+aside ul > a:hover {
+  color: #555;
+}
+aside ul > a li {
+  padding: 15px 0;
+  border-top: 1px solid #444;
+}
+
+aside .feed a {
+  font-size: 1.3em;
+}
+
+/* Footer */
+footer,
+aside {
+  margin: 0 3em;
+}
+footer {
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+.sitemap {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+
+  border-top: 4px double #999;
+  border-bottom: 1px solid #999;
+}
+.sitemap .logo {
+  grid-column: 1 / -1;
+  padding-bottom: 18px;
+  padding-top: 10px;
+}
+.sitemap h3 {
+  font-weight: 600;
+  padding-bottom: 5px;
+}
+.sitemap ul {
+  padding-bottom: 12px;
+}
+.sitemap li {
+  padding: 5px 0;
+}
+.sitemap li a,
+.bottom li a {
+  color: #555;
+  text-decoration: none;
+}
+.sitemap li a:hover,
+.bottom li a:hover {
+  color: #333;
+  text-decoration: underline;
+  text-decoration-color: #000;
+  text-decoration-thickness: 1.5px;
+}
+
+.bottom {
+  padding-top: 12px;
+}
+.bottom ul {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+}
+.bottom li {
+  padding: 0 3px;
+}
+.bottom li a:hover {
+  text-decoration-thickness: 1px;
+  text-decoration-color: inherit;
+}
+
+.subscribeSpecial {
+  font-weight: 600;
+}
+
+.subscribeSpecial li a {
+  color: #000;
+}
+
+.sitemap div:last-child {
+  padding-left: 18px;
+  margin-bottom: 18px;
+  border-left: 1px solid #999;
+}
+.sitemap div:last-child li {
+  padding: 7px 0;
+}
+.sitemap div:last-child ul:not(.subscribeSpecial) li:nth-child(3) {
+  padding-bottom: 12px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #999;
 }
